@@ -18,6 +18,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .card {
@@ -49,7 +50,14 @@ h1::after {
   width: 100%;
   bottom: -14px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0);
+  animation: h1anim 10s ease-in-out forwards;
+  transform-origin: center;
+}
+@keyframes h1anim {
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
 }
 
 .grid-container {
@@ -100,6 +108,7 @@ p::selection {
   display: flex;
   justify-content: space-around;
   margin: 20px 0 30px;
+  perspective: 40px;
 }
 input[type="checkbox"] {
   display: none;
@@ -119,6 +128,31 @@ label {
   border-radius: 4px;
   transition: 0.2s;
   user-select: none;
+}
+label:first-of-type:hover {
+  animation: label1 1s infinite linear;
+}
+@keyframes label1 {
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+label:nth-child(4):hover {
+  animation: label2 3s infinite;
+}
+@keyframes label2 {
+  33% {
+    transform: translateZ(30px);
+  }
+  66% {
+    transform: translateZ(-40px);
+  }
+  100% {
+    transform: translateZ(0);
+  }
 }
 
 .email {
@@ -183,4 +217,69 @@ a {
 
 a:visited {
   color: var(--color1);
+}
+
+img {
+  height: 40px;
+  position: absolute;
+  filter: drop-shadow(0px 6px 3px rgba(255, 255, 0, 0.6));
+  z-index: -1;
+  animation: spaceship 60s infinite linear;
+}
+@keyframes spaceship {
+  0% {
+    top: 2%;
+    left: 2%;
+    transform: rotate(90deg);
+  }
+  10% {
+    top: 6%;
+    left: 30%;
+    transform: rotate(95deg);
+  }
+  20% {
+    top: 9%;
+    left: 60%;
+    transform: rotate(60deg);
+  }
+  30% {
+    top: 0%;
+    left: 80%;
+    transform: rotate(90deg);
+  }
+  40% {
+    top: 20%;
+    left: 120%;
+    transform: rotate(110deg);
+  }
+  50% {
+    top: 50%;
+    left: 80%;
+    transform: rotate(323deg);
+  }
+  60% {
+    top: 90%;
+    left: 90%;
+    transform: rotate(256deg);
+  }
+  70% {
+    top: 110%;
+    left: 50%;
+    transform: rotate(237deg);
+  }
+  80% {
+    top: 85%;
+    left: 30%;
+    transform: rotate(323deg);
+  }
+  90% {
+    top: 50%;
+    left: 15%;
+    transform: rotate(350deg);
+  }
+  100% {
+    top: 2%;
+    left: 2%;
+    transform: rotate();
+  }
 }
